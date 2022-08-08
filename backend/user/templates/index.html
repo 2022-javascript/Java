@@ -41,10 +41,10 @@
                 <ol id = "numbers">
                 </ol>
             </div>
-            <div class="page_button">
-            </div>
             <ul class = news_contents>
             </ul>
+            <div class="page_button">
+            </div>
         </div>
     </div>
 
@@ -52,11 +52,15 @@
     <script>
         var sumation_data;
         var table_state = {
-            'category' : '일반',
+            'category' : '전체',
             'page_num' : 0
         };
-        function click_event(num){
+        function click_event_page(num){
             table_state['page_num'] = num;
+            update_table();
+        }
+        function click_event_news(name){
+            table_state['category'] = name;
             update_table();
         }
         // news table update
@@ -74,11 +78,8 @@
             $('ul.news_contents *').remove();
 
             for(var i = 0;i<page_num;i++){
-                paging.append('<a href = "javascript:return false;" class = "page_num"' + `onclick = "click_event('${i}');" ` + '>' + (i + 1) + '</a>');
+                paging.append('<a href = "javascript:return false;" class = "page_num"' + `onclick = "click_event_page('${i}');" ` + '>' + (i + 1) + '</a>');
             }
-            $('a.page_num').css({
-                "margin-left" : "10px"
-            });
             if (data.length - page_num_state < 10){
                 temp = data.length - page_num_state;
             }
@@ -119,9 +120,27 @@
 
             // add category label
             for(var i = 0;i<category_name.length;i++){
-                numbers.append('<li><a href = "#" class = "TabLabel">' + category_name[i] +'</a></li>');
+                numbers.append('<li><a href = "#" class = "TabLabel"'+ `onclick = "click_event_news('${category_name[i]}');" ` +'>' + category_name[i] +'</a></li>');
             }
-
+            numbers.css({
+                "display" : "flex",
+            });
+            $('#numbers li').css({
+                "font-size" : "23px",
+                "list-style" : "none",
+            });
+            $('a.TabLabel').css({
+                "text-decoration" : "none",
+                "color" : "white",
+                "border" : "1px solid #263343",
+                "padding-left" : "22px",
+                "padding-right" : "22px",
+                "padding-top" : "11px",
+                "padding-bottom" : "11px",
+                "background-color" : "#263343",
+                "border-radius" : "7px",
+                "margin-right" : "11px",
+            });
             $.ajax({
                 type : "GET",
                 url : "{% url 'api-newsList' %}",
