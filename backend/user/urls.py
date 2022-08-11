@@ -6,4 +6,6 @@ urlpatterns = [
     path('register/',register, name= "api-register"),
     path('userList/',UserList, name = "api-userList"),
     path('newsList/',NewsList, name = 'api-newsList'),
+    path('UserInfoList/',UserInfoList, name='api-UserInfoList'),
+    path('UserInfoPost/',UserInfoPost, name='api-UserInfoPost'),
 ]

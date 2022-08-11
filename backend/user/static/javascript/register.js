@@ -65,3 +65,15 @@ function clickevent(){
         });
     }
 }
+$(document).ready(function(){
+    login_ck = $(".navbar_menu");
+    seetion_user_id = sessionStorage.getItem("user_id")
+    if (seetion_user_id != null){
+        login_ck.append(`<li><a href = "../userpage">UserPage</a></li>`);
+        
+    }
+    else{
+        login_ck.append(`<li><a href = "../login">Login</a></li>`);
+        login_ck.append(`<li><a href = "../sign_up">Register</a></li>`);
+    }
+});

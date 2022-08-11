@@ -55,49 +55,61 @@ a{
         flex-direction: column;
     }
 }
-.container{
-    margin-top: 40px;
-    display: flex;
 
-}
-.coin_news{
-    width: 700px;
-    justify-content: flex-start;
-}
-.news_contents{
+.container{
+    display: flex;
     margin-top: 30px;
-    display: block;
-    list-style-type: disc;
-    margin-block-start: 1em;
-    margin-block-end: 1em;
-    margin-inline-start: 0px;
-    margin-inline-end: 0px;
-    padding-inline-start: 40px;
+    background-color: #fff;
+    border-radius: 16px;
+    align-items: center;
+    flex-direction: column;
 }
-.news_contents .coin_news_items{
+
+.item_title{
+    padding: 24px 32px;
+    border: 1px solid #E9EDF2;
     display: flex;
     align-items: center;
-    width: 50%;
-    margin-top: 20px;
-    padding-left: 20px;
-    padding-right: 20px;
-    box-sizing: border-box;
-}
-.news_contents .coin_news_items a{
-    overflow: hidden;
-    text-overflow: ellipsis;
-    white-space: nowrap;
-    text-decoration: none;
+    width : 1200px;
+    height: 100px;
 }
 
-.page_button{
+#user_title{
+    font-family: IBM Plex Sans;
+    font-style: normal;
+    font-weight: 600;
+    font-size: 24px;
+    line-height: 28px;
+    color: #121214;
+}
+.item_container {
+    padding: 24px 32px;
+    border: 1px solid #E9EDF2;
+    display: flex;
+    align-items: center;
+    width : 1200px;
+    height: 100px;
+}
+
+img {
+    width: 32px;
+    height: 32px;
+    margin-right: 12px;
+}
+
+.item_container div{
     display: flex;
     justify-content: center;
+    align-items: center;
+    font-weight: 600;
+    font-size: 18px;
+    line-height: 32px;
+    font-family: system-ui;
+    color: #121214;
 }
 
-.page_button a{
-    font-size: 25px;
-    margin-left : 10px;
-    text-decoration : none;
-    color : black;
+span{
+    font-family: 'Source Sans pro';
+    padding : 14px;
+    width: 100px;
 }

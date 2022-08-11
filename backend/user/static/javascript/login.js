@@ -19,6 +19,7 @@ function LoginCk(){
             }
             else{
                 sessionStorage.setItem("user_id",id);
+                sessionStorage.setItem("password",password);
                 alert("로그인 되었습니다");
                 window.location.href = "/home";
             }
@@ -28,3 +29,15 @@ function LoginCk(){
         }
     });
 }
+$(document).ready(function(){
+    login_ck = $(".navbar_menu");
+    seetion_user_id = sessionStorage.getItem("user_id")
+    if (seetion_user_id != null){
+        login_ck.append(`<li><a href = "../userpage">UserPage</a></li>`);
+        
+    }
+    else{
+        login_ck.append(`<li><a href = "../login">Login</a></li>`);
+        login_ck.append(`<li><a href = "../sign_up">Register</a></li>`);
+    }
+});

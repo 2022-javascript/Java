@@ -1,0 +1,68 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link href="https://fonts.googleapis.com/css2?family=Source+Sans+Pro:wght@200&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="{% static 'css/userpage_write.css' %}">
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js" integrity="sha256-/xUj+3OJU5yExlq6GSYGSHk7tPXikynS7ogEvDej/m4=" crossorigin="anonymous"></script>
+    <title>COBOK</title>
+    <script>
+        post_url = "{% url 'api-UserInfoPost' %}";
+        get_url = "{% url 'api-userList' %}";
+        csrf = "{{ csrf_token }}";
+    </script>
+</head>
+<body>
+    <div class="container">
+        <div class="input_table">
+            <form class="input_form" target = "param">
+                <h1>User Info</h1>
+                <label for="Nickname"> Nickname</label>
+                <input type = "text" id = "nickname"><br>
+                <label for="Phone Number"> Phone Number</label>
+                <input type = "text" id = "Phone_Number"><br>
+                <label for="Identity_Verification"> Identity Verification</label>
+                <input type = "text" id = "Identity_Verification"><br>
+                <label for="api_key"> Api key</label>
+                <input type = "text" id = "Api_key"><br>
+                <label for="sec_key"> Sec key</label>
+                <input type = "text" id = "Sec_key"><br>
+                <button type="submit", onclick="InfoSubmit()">Submit</button>
+            </form>
+            <iframe id="if" name="param" style="display:none;"></iframe>
+        </div>
+    </div>
+    <script>
+        function InfoSubmit(){
+            email = sessionStorage.getItem("user_id");
+            password = sessionStorage.getItem("password");
+            nickname = document.getElementById('nickname').value;
+            Phone_Number = document.getElementById('Phone_Number').value;
+            Identity_Verification = document.getElementById('Identity_Verification').value;
+            api_key = document.getElementById('Api_key').value;
+            sec_key = document.getElementById('Sec_key').value;
+            $.ajax({
+                type: "POST",
+                url: post_url,
+                data: {
+                    "nickname": nickname,
+                    "Email": email,
+                    "phone_number": Phone_Number,
+                    "Identity_Verification": Identity_Verification,
+                    "password": password,
+                    "api_key": api_key,
+                    "sec_key": sec_key,
+                    'csrfmiddlewaretoken': csrf
+                },
+                dataType: "json",
+                success: function() {
+                    window.location.href = "../userpage"
+                },
+            });
+        }
+    </script>
+</body>
+</html>

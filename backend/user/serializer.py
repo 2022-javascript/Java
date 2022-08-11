@@ -1,5 +1,5 @@
 from rest_framework import serializers
-from .models import User,NewsData
+from .models import User,NewsData,UserInfo
 
 class UserSerialrizer(serializers.ModelSerializer):
     class Meta:
@@ -10,3 +10,8 @@ class NewsSerialrizer(serializers.ModelSerializer):
     class Meta:
         model = NewsData
         fields = ['category','news_name','news_href']
+
+class UserInfoSerialrizer(serializers.ModelSerializer):
+    class Meta:
+        model = UserInfo
+        fields = ['nickname','Email','phone_number','Identity_Verification','password','api_key','sec_key']

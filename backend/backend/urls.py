@@ -22,4 +22,6 @@ urlpatterns = [
     path('api/',include('user.urls')),
     path('home/',home),
     path('login/',login),
+    path('userpage/',userpage),
+    path('write/',userpageWrite),
 ]

@@ -1,8 +1,8 @@
 from django.shortcuts import render
 from rest_framework.response import Response
 from rest_framework.decorators import api_view
-from .models import User,NewsData
-from .serializer import UserSerialrizer,NewsSerialrizer
+from .models import User,NewsData,UserInfo
+from .serializer import UserSerialrizer,NewsSerialrizer,UserInfoSerialrizer
 from django.http import QueryDict
 
 # from COBOK.upbit_crawling import news_crewling
@@ -48,6 +48,25 @@ def NewsList(request):
     serializer = NewsSerialrizer(news, many = True)
 
     return Response(serializer.data)
+@api_view(['GET'])
+def UserInfoList(request):
+    userInfo = UserInfo.objects.all()
+
+    serializer = UserInfoSerialrizer(userInfo, many = True)
+
+    return Response(serializer.data)
+
+@api_view(['POST'])
+def UserInfoPost(request):
+
+    serializer = UserInfoSerialrizer(data = request.data)
+    if serializer.is_valid():
+        serializer.save()
+        print('vailed data..')
+    else:
+        print('invalied data...')
+    print(serializer.data)
+    return Response(serializer.data)
 
 def sign_up(request):
     return render(request, 'register.html')
@@ -71,3 +90,9 @@ def home(request):
 
 def login(request):
     return render(request, 'login.html')
+
+def userpage(request):
+    return render(request, "userpage.html")
+
+def userpageWrite(request):
+    return render(request,"userpage_write.html")
