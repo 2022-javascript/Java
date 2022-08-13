@@ -107,9 +107,36 @@ img {
     font-family: system-ui;
     color: #121214;
 }
-
+.profile_button{
+    border : 1px solid black;
+    border-radius: 9px;
+    background-color: #263343;
+    width: 70px;
+    height: 20px;
+    font-size: 15px;
+    text-align: center;
+    color: white;
+    padding : 10px 0px;
+    margin-left: 100px;
+}
+.profile_button:hover{
+    background-color: #d49466;
+    border-radius: 9px;
+}
 span{
+    /* display: inline-block; */
     font-family: 'Source Sans pro';
     padding : 14px;
-    width: 100px;
+    width: 200px;
+}
+
+.LastLoginText{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-weight: 600;
+    font-size: 18px;
+    line-height: 32px;
+    font-family: system-ui;
+    color: #121214;
 }

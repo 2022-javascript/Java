@@ -22,6 +22,8 @@ $(document).ready(function(){
                 }
             }
             if (flag != 1){
+                var title = $('div.item_title');
+                title.append(`<a class = "profile_button" href ="../write">Profile</a>`);
                 // window.location.href = "/write"
             }
             else{
@@ -32,13 +34,9 @@ $(document).ready(function(){
                 var Api_key = $('div.Api_key');
                 var Sec_key = $('div.Sec_key');
                 var Password = $('div.Password');
-                console.log(data);
-                console.log("ㄴ우라ㅓㅇㄹ노하퓨아ㅓㅇ로ㅓㅑㅣㅇ러");
                 nickname.append(`<span class="Nickname">`+ data[idx]['nickname'] +`</span>`)
-                nickname.append(`<br>`);
-                nickname.append(`<span class="Nickname">`+ "Last tLogin" + `</span>`);
                 email.append(`<span class="Nickname">`+ data[idx]['Email'] + `</span>`);
-                PhoneNumber.append(`<span class="Phone">`+ data[idx]['phone_number'] +`</span>`)
+                PhoneNumber.append(`<span class="Phone">`+ data[idx]['phone_number'] +`</span>`);
                 Identity_Verification.append(`<span class="Identity">`+ data[idx]['Identity_Verification'] +`</span>`)
                 Password.append(`<span class="Password">`+ data[idx]['password'] +`</span>`)
                 Api_key.append(`<span class="api_key">`+ data[idx]['api_key'] +`</span>`)

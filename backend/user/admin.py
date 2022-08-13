@@ -8,6 +8,7 @@ class NewsDataAdmin(admin.ModelAdmin):
     pass
 class UserInfoAdmin(admin.ModelAdmin):
     pass
+
 admin.site.register(UserInfo,UserInfoAdmin)
 admin.site.register(NewsData,NewsDataAdmin)
 admin.site.register(User, UserAdmin)

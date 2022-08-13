@@ -19,3 +19,4 @@ class UserInfo(models.Model):
     password = models.CharField(max_length=64)
     api_key = models.CharField(max_length=256)
     sec_key = models.CharField(max_length=256)
+    # last_login = models.DateTimeField(auto_now_add=True)
