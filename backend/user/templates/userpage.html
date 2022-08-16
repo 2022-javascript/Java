@@ -13,9 +13,9 @@
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
 
     <script>
-        post_url = "{% url 'api-register' %}";
-        get_url = "{% url 'api-UserInfoList' %}";
-        csrf = "{{ csrf_token }}";
+        var post_url = "{% url 'api-register' %}";
+        var get_url = "{% url 'api-UserInfoList' %}";
+        var csrf = "{{ csrf_token }}";
     </script>
 
     <script src = "{% static 'javascript/userpage.js' %}"></script>
@@ -62,6 +62,8 @@
             <div class="lastLogin">
                 <img src="data:image/png;base64,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" alt="">
                 Last Login
+                <div class="Login">
+                </div>
             </div>
         </div>
         <div class="item_container">

@@ -61,6 +61,11 @@ function Sumation(data){
     sumation_data = news_dic;
 }
 
+// logout
+function logout(){
+    sessionStorage.removeItem("user_id"); // keyName에 해당하는 값 삭제
+    sessionStorage.removeItem("password"); // keyName에 해당하는 값 삭제
+}
 // data getering
 $(document).ready(function(){
     var category_name = ['전체','일반','규제/정책','산업/테크','칼럼/인터뷰'];
@@ -74,7 +79,7 @@ $(document).ready(function(){
     seetion_user_id = sessionStorage.getItem("user_id")
     if (seetion_user_id != null){
         login_ck.append(`<li><a href = "../userpage">UserPage</a></li>`);
-        
+        login_ck.append(`<li><a href = "../home" onclick = "logout()" >Logout</a></li>`);
     }
     else{
         login_ck.append(`<li><a href = "../login">Login</a></li>`);

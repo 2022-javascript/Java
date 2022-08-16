@@ -2,7 +2,7 @@ from django.shortcuts import render
 from rest_framework.response import Response
 from rest_framework.decorators import api_view
 from .models import User,NewsData,UserInfo
-from .serializer import UserSerialrizer,NewsSerialrizer,UserInfoSerialrizer
+from .serializer import UserSerialrizer,NewsSerialrizer,UserInfoSerialrizer,UpdateLoginTime
 from django.http import QueryDict
 
 # from COBOK.upbit_crawling import news_crewling
@@ -67,6 +67,19 @@ def UserInfoPost(request):
         print('invalied data...')
     print(serializer.data)
     return Response(serializer.data)
+    
+
+@api_view(['GET','PUT'])
+def UpdateLastLogin(request,pk):
+    if request.method == "PUT":
+        user_object = UserInfo.objects.get(Email=pk)
+        serializer = UpdateLoginTime(instance = user_object, data = request.data)
+        if serializer.is_valid():
+            serializer.save()
+            print('vailed data..')
+        else:
+            print('invalied data...')
+        return Response(serializer.data)
 
 def sign_up(request):
     return render(request, 'register.html')

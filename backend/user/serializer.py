@@ -14,4 +14,9 @@ class NewsSerialrizer(serializers.ModelSerializer):
 class UserInfoSerialrizer(serializers.ModelSerializer):
     class Meta:
         model = UserInfo
-        fields = ['nickname','Email','phone_number','Identity_Verification','password','api_key','sec_key']
+        fields = ['nickname','Email','phone_number','Identity_Verification','password','api_key','sec_key','last_login']
+
+class UpdateLoginTime(serializers.ModelSerializer):
+    class Meta:
+        model = UserInfo
+        fields = ['last_login']

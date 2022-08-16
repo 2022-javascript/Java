@@ -11,9 +11,10 @@
     <link href="https://fonts.googleapis.com/css2?family=Source+Sans+Pro:wght@200&display=swap" rel="stylesheet">
     <script src="https://code.jquery.com/jquery-3.6.0.min.js" integrity="sha256-/xUj+3OJU5yExlq6GSYGSHk7tPXikynS7ogEvDej/m4=" crossorigin="anonymous"></script>
     <script>
-        post_url = "{% url 'api-register' %}";
-        get_url = "{% url 'api-userList' %}";
-        csrf = "{{ csrf_token }}";
+        var post_url = "{% url 'api-register' %}";
+        var get_url = "{% url 'api-userList' %}";
+        var LastLogin = "{% url 'api-LastLogin' pk='argument' %}";
+        var csrf = "{{ csrf_token }}";
     </script>
     <script src = "{% static 'javascript/login.js' %}"></script>
 </head>

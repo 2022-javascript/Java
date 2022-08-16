@@ -9,6 +9,7 @@ $(document).ready(function(){
         login_ck.append(`<li><a href = "../login">Login</a></li>`);
         login_ck.append(`<li><a href = "../sign_up">Register</a></li>`);
     }
+    
     $.ajax({
         type : "GET",
         url : get_url,
@@ -34,7 +35,12 @@ $(document).ready(function(){
                 var Api_key = $('div.Api_key');
                 var Sec_key = $('div.Sec_key');
                 var Password = $('div.Password');
-                nickname.append(`<span class="Nickname">`+ data[idx]['nickname'] +`</span>`)
+                var lastlogin = $('div.Login');
+
+                var login_data = data[idx]['last_login'].replace('Z','').replace('T',' ');
+                
+                nickname.append(`<span class="Nickname">`+ data[idx]['nickname'] +`</span>`);
+                lastlogin.append(`<span class="Login">`+ login_data +`</span>`);
                 email.append(`<span class="Nickname">`+ data[idx]['Email'] + `</span>`);
                 PhoneNumber.append(`<span class="Phone">`+ data[idx]['phone_number'] +`</span>`);
                 Identity_Verification.append(`<span class="Identity">`+ data[idx]['Identity_Verification'] +`</span>`)
@@ -47,4 +53,5 @@ $(document).ready(function(){
             alert(get_url);
         }
     });
+    
 });

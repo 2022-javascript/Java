@@ -85,6 +85,9 @@ DATABASES = {
         'PASSWORD' : '825582qaz',
         'HOST' : 'database-2.cyyrt9e5hsme.ap-northeast-2.rds.amazonaws.com',
         'POST' : '3306',
+        'OPTIONS': {
+        'init_command': "SET sql_mode='STRICT_TRANS_TABLES'"
+    }
     }
 }
 
