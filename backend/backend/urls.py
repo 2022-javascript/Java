@@ -24,4 +24,5 @@ urlpatterns = [
     path('login/',login),
     path('userpage/',userpage),
     path('write/',userpageWrite),
+    path('AIResearch/',AIResearch),
 ]

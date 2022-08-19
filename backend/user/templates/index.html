@@ -9,6 +9,56 @@
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Source+Sans+Pro:wght@200&display=swap" rel="stylesheet">
+    <script type="text/javascript" src="https://canvasjs.com/assets/script/jquery-1.11.1.min.js"></script>
+    <script type="text/javascript" src="https://canvasjs.com/assets/script/canvasjs.stock.min.js"></script>
+    <script type="text/javascript">
+    window.onload = function () {
+    var dps1 = [], dps2= [];
+    var stockChart = new CanvasJS.StockChart("chartContainer",{
+        theme: "light2",
+        exportEnabled: true,
+        title:{
+        text:"StockChart with Date-Time Axis"
+        },
+        subtitles: [{
+        text: "Bitcoin Price (in USD)"
+        }],
+        charts: [{
+        axisX: {
+            crosshair: {
+            enabled: true,
+            snapToDataPoint: true
+            }
+        },
+        axisY: {
+            prefix: "$"
+        },
+        data: [{
+            type: "candlestick",
+            yValueFormatString: "$#,###.##",
+            dataPoints : dps1
+        }]
+        }],
+        navigator: {
+        data: [{
+            dataPoints: dps2
+        }],
+        slider: {
+            minimum: new Date(2018, 04, 01),
+            maximum: new Date(2018, 06, 01)
+        }
+        }
+    });
+    $.getJSON("https://canvasjs.com/data/docs/btcusd2018.json", function(data) {
+        for(var i = 0; i < data.length; i++){
+            console.log(data[i].data);
+            dps1.push({x: new Date(data[i].date), y: [Number(data[i].open), Number(data[i].high), Number(data[i].low), Number(data[i].close)]});
+            dps2.push({x: new Date(data[i].date), y: Number(data[i].close)});
+        }
+        stockChart.render();
+    });
+    }
+    </script>
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
 
     <script>
@@ -55,5 +105,6 @@
             </div>
         </div>
     </div>
+    <div id="chartContainer" style="height: 450px; width: 100%;"></div>
 </body>
 </html>

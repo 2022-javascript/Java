@@ -1,0 +1,71 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>COBOK</title>
+    <link rel="stylesheet" href="{% static 'css/login.css' %}">
+    <link rel="stylesheet" href="{% static 'css/index.css' %}">
+    <link href="https://fonts.googleapis.com/css2?family=Source+Sans+Pro:wght@200&display=swap" rel="stylesheet">
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js" integrity="sha256-/xUj+3OJU5yExlq6GSYGSHk7tPXikynS7ogEvDej/m4=" crossorigin="anonymous"></script>
+    <script>
+        var post_url = "{% url 'api-register' %}";
+        var get_url = "{% url 'api-userList' %}";
+        var LastLogin = "{% url 'api-LastLogin' pk='argument' %}";
+        var csrf = "{{ csrf_token }}";
+        console.log("{{ data }}");
+    </script>
+    <script src = "{% static 'javascript/login.js' %}"></script>
+</head>
+<body>
+    <div class="nav">
+        <div class="nav_logo">
+            <a href = "/home">
+                <img class = "logo" src="{% static 'image/dogeImg.jpeg' %}" alt="">
+            </a>
+            <a href = "/home" style="color: wheat;">COBOK</a>
+        </div>
+        <ul class="navbar_menu">
+            <li><a href = "/home">Home</a></li>
+            <!-- <li><a href = "../login">Login</a></li> -->
+            <!-- <li><a href = "../sign_up">Register</a></li> -->
+            <!-- <li><a href = "../userpage">UserPage</a></li> -->
+        </ul>
+        <div class="icon">
+            <a href = "https://www.kakaocorp.com/page/service/service/KakaoTalk">
+                <img class = "nav_icon" src="{% static 'image/kakaoimg.png' %}" alt="">
+            </a>
+            <a href="https://twitter.com/?lang=ko">
+                <img class = "nav_icon" src="{% static 'image/twiterimg.png' %}" alt="">
+            </a>
+        </div>
+    </div>
+    {% block content %}
+
+    <table>
+        <tr>
+            <td>IP</td><td>Hostname</td><td>Connect</td>
+        </tr>
+    {% for i in context %}
+        <tr>
+        {% for key, value in i.items %}
+            <td>
+                {{ key }}
+                {{ value }}
+            </td>
+        {% endfor %}
+        </tr>
+    {% endfor %}
+    
+    </table>
+    {% endblock content %}
+    <script>
+        var temp;
+        $(document).ready(function(){
+            temp = "{{context}}";
+            console.log(temp);
+        })
+    </script>
+</body>

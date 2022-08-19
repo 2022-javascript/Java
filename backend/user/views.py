@@ -4,7 +4,7 @@ from rest_framework.decorators import api_view
 from .models import User,NewsData,UserInfo
 from .serializer import UserSerialrizer,NewsSerialrizer,UserInfoSerialrizer,UpdateLoginTime
 from django.http import QueryDict
-
+from .AIDataGet import res_data
 # from COBOK.upbit_crawling import news_crewling
 
 import pandas as pd
@@ -109,3 +109,8 @@ def userpage(request):
 
 def userpageWrite(request):
     return render(request,"userpage_write.html")
+
+def AIResearch(request):
+    data = res_data()
+    print(data)
+    return render(request,"AIResearch.html",{'context': data})
