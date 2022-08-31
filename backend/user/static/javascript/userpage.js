@@ -11,6 +11,7 @@ $(document).ready(function(){
         login_ck.append(`<li><a href = "../userpage">UserPage</a></li>`);
         login_ck.append(`<li><a href = "../AIResearch">AI Research</a></li>`);
         login_ck.append(`<li><a href = "../home" onclick = "logout()" >Logout</a></li>`);
+        login_ck.append(`<li><a href = "../trade">Trade</a></li>`);
     }
     else{
         login_ck.append(`<li><a href = "../login">Login</a></li>`);

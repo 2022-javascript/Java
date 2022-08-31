@@ -9,4 +9,6 @@ urlpatterns = [
     path('UserInfoList/',UserInfoList, name='api-UserInfoList'),
     path('UserInfoPost/',UserInfoPost, name='api-UserInfoPost'),
     path('LastLogin/<str:pk>/',UpdateLastLogin, name='api-LastLogin'),
+    path('AIData/',AIData, name='api-AIData'),
+    path('Trade_data/',Trade, name='api-trade'),
 ]

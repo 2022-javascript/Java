@@ -12,10 +12,9 @@
     <script src="https://code.jquery.com/jquery-3.6.0.min.js" integrity="sha256-/xUj+3OJU5yExlq6GSYGSHk7tPXikynS7ogEvDej/m4=" crossorigin="anonymous"></script>
     <script>
         var post_url = "{% url 'api-register' %}";
-        var get_url = "{% url 'api-userList' %}";
+        var get_url = "{% url 'api-AIData' %}";
         var LastLogin = "{% url 'api-LastLogin' pk='argument' %}";
         var csrf = "{{ csrf_token }}";
-        console.log("{{ data }}");
     </script>
     <script src = "{% static 'javascript/login.js' %}"></script>
 </head>
@@ -42,7 +41,19 @@
             </a>
         </div>
     </div>
-    {% block content %}
+    <div class = "container">
+        <div class="coin_news">
+            <div class="pagination">
+                <ol id = "numbers">
+                </ol>
+            </div>
+            <ul class = news_contents>
+            </ul>
+            <div class="page_button">
+            </div>
+        </div>
+    </div>
+    <!-- {% block content %}
 
     <table>
         <tr>
@@ -60,12 +71,46 @@
     {% endfor %}
     
     </table>
-    {% endblock content %}
+    {% endblock content %} -->
     <script>
-        var temp;
+        var AIData;
+        
+        function upgrade_table(){
+
+        }
         $(document).ready(function(){
-            temp = "{{context}}";
-            console.log(temp);
+            $.ajax({
+                type : "GET",
+                url : get_url,
+                success : function(data){
+                    var page_num = Math.ceil(data.length/10);
+                    var paging = $('div.page_button');
+                    var contents = $('ul.news_contents');
+                    var page_num_state = table_state['page_num'] * 10;
+
+                    $('div.page_button *').remove();
+                    $('ul.news_contents *').remove();
+                    for(var i = 0;i<page_num;i++){
+                        paging.append('<a href = "javascript:return false;" class = "page_num"' + `onclick = "click_event_page('${i}');" ` + '>' + (i + 1) + '</a>');
+                    }
+
+                    if (data.length - page_num_state < 10){
+                        temp = data.length - page_num_state;
+                    }
+                    else{
+                        temp = 10;
+                    }
+
+                    // for(var i = 0;i<temp;i++){
+                    //     contents.append('<li class = "coin_news_items"><a id = "news_name" href = '
+                    //     + data[i + page_num_state][1] + '>'
+                    //     + data[i + page_num_state][0] +'</a></li>');
+                    // }
+                    AIData = data;
+
+                    console.log(data);
+                }
+            });
         })
     </script>
 </body>

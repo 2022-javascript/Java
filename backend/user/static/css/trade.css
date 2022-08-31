@@ -1,0 +1,93 @@
+body{
+    margin : 0;
+    font-family: 'Source Sans pro';
+}
+a{
+    text-decoration: none;
+    color : black;
+}
+.nav{
+    font-size: 40px;
+    background-color: #263343;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    border-bottom : 1px solid black;
+    height: 100px;
+}
+.nav_logo{
+    margin-left: 20px;
+    border-radius: 7px;
+}
+.nav_logo .logo{
+    width : 35px;
+    height : 35px;
+}
+.navbar_menu{
+    display: flex;
+    padding-left : 0;
+}
+.navbar_menu li{
+    font-size: 23px;
+    list-style: none;
+    margin-left: 15px;
+    padding : 8px 12px;
+}
+.navbar_menu li:hover{
+    background-color: #d49466;
+    border-radius: 4px;
+}
+.nav_icon{
+    background-color: gray;
+    width: 35px;
+    height: 35px;
+    margin-right: 20px;
+    border-radius: 7px;
+}
+
+.nav a{
+    text-decoration: none;
+    color : white;
+}
+
+@media screen and (max-width:768px) {
+    .nav{
+        flex-direction: column;
+    }
+}
+
+.trade_table{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    margin-top: 30px;
+}
+.connect_state{
+    display: flex;
+    align-items: center;
+    border : 1px solid black;
+    border-radius: 16px;
+    margin-top: 30px;
+    width : 1200px;
+    height: 100px;
+    font-family: system-ui;
+}
+.connect_state h1{
+    margin-left: 20px;
+    font-size: 24px;
+    font-weight: bold;
+}
+.trade_select{
+    border : 1px solid black;
+    border-radius: 16px;
+    margin-top: 30px;
+    width : 1200px;
+    height: 200px;
+}
+.trade_list{
+    border : 1px solid black;
+    border-radius: 16px;
+    margin-top: 30px;
+    width : 1200px;
+    height: 500px;
+}

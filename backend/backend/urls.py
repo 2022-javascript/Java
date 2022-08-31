@@ -25,4 +25,5 @@ urlpatterns = [
     path('userpage/',userpage),
     path('write/',userpageWrite),
     path('AIResearch/',AIResearch),
+    path('trade/',AUTOMATIC_TRADING),
 ]

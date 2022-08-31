@@ -1,3 +1,4 @@
+from attr import field
 from rest_framework import serializers
 from .models import User,NewsData,UserInfo
 
@@ -20,3 +21,8 @@ class UpdateLoginTime(serializers.ModelSerializer):
     class Meta:
         model = UserInfo
         fields = ['last_login']
+
+class TradeSerialrizer(serializers.ModelSerializer):
+    class Meta:
+        model = UserInfo
+        fields = ['api_key','sec_key']

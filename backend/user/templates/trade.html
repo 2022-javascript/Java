@@ -1,0 +1,59 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="{% static 'css/trade.css' %}">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Source+Sans+Pro:wght@200&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Source+Sans+Pro:wght@200&display=swap" rel="stylesheet">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+
+    <script>
+        var post_url = "{% url 'api-trade' %}";
+        var get_url = "{% url 'api-UserInfoList' %}";
+        var csrf = "{{ csrf_token }}";
+    </script>
+
+    <script src = "{% static 'javascript/trade.js' %}"></script>
+
+    <title>COBOK</title>
+</head>
+<body>
+    <div class="nav">
+        <div class="nav_logo">
+            <a href = "/">
+                <img class = "logo" src="{% static 'image/dogeImg.jpeg' %}" alt="">
+            </a>
+            <a href = "/home" style="color: wheat;">COBOK</a>
+        </div>
+        <ul class="navbar_menu">
+            <li><a href = "/home">Home</a></li>
+            <!-- <li><a href = "../login">Login</a></li>
+            <li><a href = "../sign_up">Register</a></li>
+            <li><a href = "../userpage">UserPage</a></li> -->
+        </ul>
+        <div class="icon">
+            <a href = "https://www.kakaocorp.com/page/service/service/KakaoTalk">
+                <img class = "nav_icon" src="{% static 'image/kakaoimg.png' %}" alt="">
+            </a>
+            <a href="https://twitter.com/?lang=ko">
+                <img class = "nav_icon" src="{% static 'image/twiterimg.png' %}" alt="">
+            </a>
+        </div>
+    </div>
+    <div class="trade_table">
+        <div class="connect_state">
+            <h1>Upbit API-Connect state</h1>
+        </div>
+        <div class="trade_select">
+
+        </div>
+        <div class="trade_list">
+
+        </div>
+    </div>
+</body>

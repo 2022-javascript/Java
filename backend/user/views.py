@@ -1,8 +1,10 @@
 from django.shortcuts import render
 from rest_framework.response import Response
 from rest_framework.decorators import api_view
+
+# from ..COBOK.trade import auto_trade
 from .models import User,NewsData,UserInfo
-from .serializer import UserSerialrizer,NewsSerialrizer,UserInfoSerialrizer,UpdateLoginTime
+from .serializer import UserSerialrizer,NewsSerialrizer,UserInfoSerialrizer,UpdateLoginTime,TradeSerialrizer
 from django.http import QueryDict
 from .AIDataGet import res_data
 # from COBOK.upbit_crawling import news_crewling
@@ -110,7 +112,26 @@ def userpage(request):
 def userpageWrite(request):
     return render(request,"userpage_write.html")
 
-def AIResearch(request):
+@api_view(['GET'])
+def AIData(request):
     data = res_data()
-    print(data)
-    return render(request,"AIResearch.html",{'context': data})
+
+    return Response(data)
+
+@api_view(['POST'])
+def Trade(request):
+    param_api,param_sec = list(request.data)[0],list(request.data)[1]
+    # auto_trade(param_api,param_sec)
+    serializer = TradeSerialrizer(data = request.data)
+    if serializer.is_valid():
+        print('vailed data..')
+    else:
+        print('invalied data...')
+    print(serializer.data)
+    return Response(serializer.data)
+
+def AIResearch(request):
+    return render(request,"AIResearch.html")
+
+def AUTOMATIC_TRADING(request):
+    return render(request,"trade.html")
